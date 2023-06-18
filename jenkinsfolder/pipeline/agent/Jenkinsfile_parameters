@@ -3,6 +3,15 @@ pipeline{
     parameters {
         choice(name: 'Deploy',choices: ['test','qa','prod'],description:'enter the env to ')
     }
+ triggers {
+        pollSCM('H */4 * * 1-5')
+    }
+
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+        retry(3) 
+    }
+
     stages {
         stage ('BUILD') {
             steps {
