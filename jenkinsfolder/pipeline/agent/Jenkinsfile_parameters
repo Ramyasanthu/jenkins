@@ -1,9 +1,11 @@
-pipeline{
-    agent any
+pipeline {
+	agent any  
+
     parameters {
-        choice(name: 'Deploy',choices: ['test','qa','prod'],description:'enter the env to ')
+        choice(name: 'DEPLOY', choices: ['test','qa','prod'], description: 'Enter the environment to Deploy ....')
     }
- triggers {
+
+    triggers {
         pollSCM('H */4 * * 1-5')
     }
 
@@ -12,19 +14,19 @@ pipeline{
         retry(3) 
     }
 
-    stages {
-        stage ('BUILD') {
-            steps {
-                script {
-                    def ENVIRONMENT = "${params.Deploy}"
-                    if(ENVIRONMENT == 'Test'){
-                        echo "Deploying to Test......"
-                    
-                    } else if(ENVIRONMENT == 'QA'){
-                        echo " Deploying to QA......"
+	stages {
+		stage('BUILD') {
+            options { retry(3) }
+			steps {
+				script {
+                    def ENVIRONMENT = "${params.DEPLOY}"
+                    if(ENVIRONMENT == 'test') {
+                        echo "Deploying to TEST ....."
+                    } else if(ENVIRONMENT == 'qa') {
+                        echo "Deploying to QA ....."
                     }
                 }
-            }
-        }
-    }
+			}	
+		}
+	}
 }
