@@ -8,8 +8,8 @@ pipeline{
                     if(ENVIRONMENT == 'Test'){
                         echo "Deploying to Test......"
                     
-                    } else if(ENVIRONMENT == 'Test'){
-                        echo "Deploying to Test......"
+                    } else if(ENVIRONMENT == 'QA'){
+                        echo "Deploying to QA......"
                     }
                 }
             }
