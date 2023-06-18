@@ -1,9 +1,9 @@
 pipeline{
     agent any
-    stages{
-        stage('BUILD'){
-            STEPS{
-                SCRIPT {
+    stages {
+        stage ('BUILD') {
+            steps {
+                script {
                     def ENVIRONMENT = "${params.Deploy}"
                     if(ENVIRONMENT == 'Test'){
                         echo "Deploying to Test......"
