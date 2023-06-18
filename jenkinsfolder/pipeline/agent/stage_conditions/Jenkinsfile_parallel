@@ -42,6 +42,8 @@ stage('TEST MULTILPE'){
             sh 'sleep 5; echo This is the first stage:TEST1'
            } 
         }
+    }
+        }
    stage('DEPLOY'){
     steps {
         sh '''
