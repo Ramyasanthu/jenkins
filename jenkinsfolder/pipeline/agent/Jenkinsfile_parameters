@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    stages{
+        stage('BUILD'){
+            STEPS{
+                SCRIPT {
+                    def ENVIRONMENT = "${params.Deploy}"
+                    if(ENVIRONMENT == 'Test'){
+                        echo "Deploying to Test......"
+                    
+                    } else if(ENVIRONMENT == 'Test'){
+                        echo "Deploying to Test......"
+                    }
+                }
+            }
+        }
+    }
+}
